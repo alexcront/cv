@@ -1,1 +1,1 @@
-web: gunicorn cv-alexcront.wsgi
+web: gunicorn cv.wsgi

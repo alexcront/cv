@@ -1,0 +1,422 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171613327-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-171613327-1');
+</script>
+  <title>{% if owner %}{{ owner.first_name }} {{ owner.last_name }}{% endif %}</title>
+  <meta content="{{ owner.about1 }}" name="description">
+  <meta content="Alex, Alex Cront, Alexandru, Marian, Cronț, Cront, Alexandru Cront, Alexandru Cronț, Developer, Engineer, Programmer, Professional, AUTOSAR, C, Embedded, Coding, Degree, Debugging, Agile, ASPICE, Senior, Leader, team," name="keywords">
+  <!-- Favicons -->
+  <link href="{{ owner.favicon }}" rel="icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <!-- =======================================================
+  * Template Name: iPortfolio - v1.2.1
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+<body>
+  <!-- ======= Mobile nav toggle button ======= -->
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="{{ owner.profile_image }}" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="#">{% if owner.nickname %}{{ owner.nickname }}{% else %} {{ owner.first_name }}{% endif %} {{ owner.last_name }}</a></h1>
+        <div class="social-links mt-3 text-center">
+          {% if owner.facebook %}<a href="{{ owner.facebook }}" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>{% endif %}
+          {% if owner.skype %}<a href="{{ owner.skype }}" class="google-plus" target="_blank"><i class="bx bxl-skype"></i></a>{% endif %}
+          {% if owner.linkedin %}<a href="{{ owner.linkedin }}" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>{% endif %}
+        </div>
+      </div>
+      <nav class="nav-menu">
+          <ul>
+              <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+              {% if owner %}<li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>{% endif %}
+              {% if main_skills %}<li><a href="#skills"><i class="bx bx-server"></i> <span>Skills</span></a></li>{% endif %}
+              {% if owner %}<li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>{% endif %}
+              {% if tools %}<li><a href="#tools"><i class="bx bx-book-content"></i>Tools</a></li>{% endif %}
+              {% if programming_skills %}<li><a href="#programming_skills"><i class="bx bx-server"></i>Programming skills</a></li>{% endif %}
+              {% if projects %}<li><a href="#portfolio"><i class="bx bx-server"></i>Projects</a></li>{% endif %}
+              {% if testimonials %}<li><a href="#testimonials"><i class="bx bx-edit-alt"></i>Testimonials</a></li>{% endif %}
+              {% if owner %}<li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>{% endif %}
+          </ul>
+      </nav><!-- .nav-menu -->
+      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+    </div>
+  </header><!-- End Header -->
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center" style="background: url('{{ owner.background_image }}') top center;">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>{% if owner.nickname %}{{ owner.nickname }}{% else %} {{ owner.first_name }}{% endif %} {{ owner.last_name }}</h1>
+      <p>I'm <span class="typed" data-typed-items="an Engineer, a Developer, a Programmer"></span></p>
+    </div>
+  </section><!-- End Hero -->
+  <main id="main">
+    <!-- ======= About Section ======= -->
+  {% if owner %}
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About</h2>
+          <p align="justify">{{ owner.about1 }}</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <img src="{{ owner.profile_image }}" class="img-fluid" alt="{{ owner.full_name }}">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>Embedded Software Engineer</h3>
+            <p class="font-italic" align="justify">
+              {{ owner.about2 }}
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> {{ owner.birthday|date:"d M Y" }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Website:</strong> {{ owner.website }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> {{ owner.formatted_phone }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>City:</strong> {{ owner.city }}, {{ owner.country }}</li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> {{ owner.age }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> {{ owner.degree }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> {{ owner.email }}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Freelance:</strong> {{ owner.freelance }}</li>
+                </ul>
+              </div>
+            </div>
+            <p align="justify">{{ owner.about3 }}</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+  {% endif %}
+<!-- ======= Languages Section ======= -->
+  {% if languages %}
+    <section id="languages" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Languages</h2>
+        </div>
+        <div class="row">
+            {% for language in languages %}
+                {% if language.is_visible is True %}
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="icofont-globe-alt"></i></div>
+                        <h4 class="title">{{ language.name }}</h4>
+                        <p class="description">{{ language.level }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Languages Section -->
+  {% endif %}
+
+  {% if main_skills %}
+   <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Main skills</h2>
+        </div>
+        <div class="row skills-content">
+            {% for main_skill in main_skills %}
+                {% if main_skill.is_visible is True %}
+                    <div class="col-sm-4">
+                        <img src="{{ main_skill.logo }}" style="height: 60px; width: auto" class="mr-3 mb-3"><strong class="font-weight-bold h5">{{ main_skill.name }}</strong>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Skills Section -->
+  {% endif %}
+
+  {% if soft_skills %}
+      <!-- ======= Soft skills Section ======= -->
+    <section id="soft skills" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Soft Skills</h2>
+        </div>
+        <div class="row">
+            {% for soft_skill in soft_skills %}
+                {% if soft_skill.is_visible is True %}
+                    <div class="col-sm-4">
+                        <img src="{{ soft_skill.logo }}" style="height: 60px; width: auto" class="mr-3 mb-3"><strong class="font-weight-bold h5">{{ soft_skill.name }}</strong>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Soft skills Section -->
+  {% endif %}
+  {% if owner %}
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Resume</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title">Summary</h3>
+            <div class="resume-item pb-0">
+              <h4>{{ owner.full_name }}</h4>
+              <p align="justify"><em>{{ owner.resume_summary }}</em></p>
+              <ul>
+                <li>{{ owner.city }}, {{ owner.country }}</li>
+                <li>{{ owner.formatted_phone }}</li>
+                <li>{{ owner.email }}</li>
+              </ul>
+            </div>
+          {% if educations %}
+            <h3 class="resume-title">Education</h3>
+              {% for education in educations %}
+                  {% if education.is_visible is True %}
+                      <div class="resume-item">
+                        <h4>{{ education.get_type_display }} in {{ education.program }}</h4>
+                        <h5>{{ education.year_start }} - {{ education.year_end }}</h5>
+                           <a href="{{ education.website_faculty }}" target="_blank"><p><em>{{ education.faculty }}</em></p></a>
+                           <a href="{{ education.website_university }}" target="_blank"><p><em>{{ education.university }}, {{ education.city }}, {{ education.country }}</em></p></a>
+                        <p align="justify">{{ education.description }}</p>
+                      </div>
+                  {% endif %}
+              {% endfor %}
+          {% endif %}
+          {% if volunteerings %}
+            <h3 class="resume-title">Volunteering</h3>
+            {% for volunteering in volunteerings %}
+                {% if volunteering.is_visible is True %}
+                    <div class="resume-item">
+                        <h4>{{ volunteering.position }}</h4>
+                        <h5>{{ volunteering.get_month_start_display }} {{ volunteering.year_start }} - {{ volunteering.get_month_end_display }} {{ volunteering.year_end }}</h5>
+                        <a href="{{ volunteering.website }}" target="_blank"><p><em>{{ volunteering.organisation }}, {{ volunteering.city }}, {{ volunteering.country }}</em></p></a>
+                        <ul align="justify">
+                            {% for line in volunteering.lines_of_description %}
+                                <li>{{ line }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+          {% endif %}
+          </div>
+        {% if experiences %}
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Professional Experience</h3>
+              {% for experience in experiences %}
+                  {% if experience.is_visible is True %}
+                      <div class="resume-item">
+                          <h4>{{ experience.position }}</h4>
+                          <h5>{{ experience.get_month_start_display }} {{ experience.year_start }} - {% if experience.is_current_job is True %}Present{% else %}{{ experience.get_month_end_display }} {{ experience.year_end }}{% endif %}</h5>
+                          <a href="{{ experience.website }}" target="_blank"><p><em>{{ experience.company }}, {{ experience.city }}, {{ experience.country }} </em></p></a>
+                          <ul>
+                            {% for line in experience.lines_of_description %}
+                                <li align="justify">{{ line }}</li>
+                            {% endfor %}
+                          </ul>
+                      </div>
+                  {% endif %}
+              {% endfor %}
+          </div>
+        {% endif %}
+        </div>
+      </div>
+    </section><!-- End Resume Section -->
+  {% endif %}
+  {% if projects %}
+    <!-- ======= Portfolio Section ======= -->
+     <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+{#            <div class="portfolio-wrap">#}
+{#              <img src="static/img/testimonials/download.png" class="img-fluid" alt="">#}
+{#              <div class="portfolio-links">#}
+{#                <a href="static/img/testimonials/download.png" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>#}
+{#                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+  {% endif %}
+    <!-- ======= Services Section ======= -->
+  {% if tools %}
+    <section id="tools" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tools</h2>
+          <p>Until now I used several tools in order to have quality in my work.</p>
+        </div>
+        <div class="row">
+            {% for tool, delay in tools %}
+                {% if tool.is_visible is True %}
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="{{ delay }}">
+                        <div class="icon"><i class="{{ tool.icon }}"></i></div>
+                        <h4 class="title"><a href="">{{ tool.name }}</a></h4>
+                        <p class="description">{{ tool.description }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+  {% endif %}
+    <!-- ======= Programming Skills Section ======= -->
+  {% if programming_skills %}
+    <section id="programming_skills" class="skills section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Programming skills</h2>
+        </div>
+
+        <div class="col-sm-12">
+            {% for programming_skill in programming_skills %}
+                {% if programming_skill.is_visible is True %}
+                    <img src="{{ programming_skill.logo }}" style="height: 80px; width: auto" data-toggle="tooltip" data-placement="bottom" title="{{ programming_skill.name }}" class="mr-3">
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Skills Section -->
+  {% endif %}
+
+    {% if testimonials %}
+    <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials">
+          <div class="container">
+            <div class="section-title">
+              <h2>Testimonials</h2>
+{#              <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>#}
+            </div>
+          {% if testimonials|length >= 3 %}
+            <div class="owl-carousel testimonials-carousel">
+            {% endif %}
+                {% for testimonial in testimonials %}
+                  <div class="testimonial-item" data-aos="fade-up">
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      {{ testimonial.description }}
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img src="{{ testimonial.image }}" class="testimonial-img" alt="">
+                    <h3>{{ testimonial.full_name }}</h3>
+                    <h4>{{ testimonial.position }} at {{ testimonial.company }}</h4>
+                  </div>
+                {% endfor %}
+          {% if testimonials|length >= 3 %}
+            </div>
+              {% endif %}
+          </div>
+        </section><!-- End Testimonials Section -->
+    {% endif %}
+
+  {% if owner %}
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>If you have a great opportunity or you just want to have a little chat don't hesitate to contact me.</p>
+        </div>
+        <div class="row" data-aos="fade-in">
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Location:</h4>
+                <p>{{ owner.city }}, {{ owner.country }}</p>
+              </div>
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p>{{ owner.email }}</p>
+              </div>
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Call:</h4>
+                <p>{{ owner.formatted_phone }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <div class="info">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95777.52896916994!2d2.078556485896736!3d41.3947687105026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona!5e0!3m2!1sen!2ses!4v1593368383949!5m2!1sen!2ses" frameborder="0" style="border:0; width: 100%; height: 250px;" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+  {% endif %}
+  </main><!-- End #main -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'vendor/typed.js/typed.min.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
