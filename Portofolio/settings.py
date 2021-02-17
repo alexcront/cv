@@ -17,15 +17,11 @@ import environ
 import dotenv
 
 # Initialise environment variables
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-dotenv_file = os.path.join(BASE_DIR, "Portofolio/.env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+BASE_DIR = Path(__file__).resolve().parent.paren
 
 
 # Quick-start development settings - unsuitable for production
@@ -91,12 +87,12 @@ WSGI_APPLICATION = 'Portofolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': env.str('DB_ENGINE'),
-        'NAME': env.str('DB_NAME'),
-        'USER': env.str('DB_USER'),
-        'PASSWORD': env.str('DB_PASSWORD'),
-        'HOST': env.str('DB_HOST'),
-        'PORT': env.str('DB_PORT'),
+        'ENGINE': os.environ['DB_ENGINE'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT'],
     }
 }
 
