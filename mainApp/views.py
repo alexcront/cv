@@ -13,7 +13,8 @@ def home(request):
     experiences = Experience.objects.order_by('-year_start', '-month_start')
     volunteerings = Volunteering.objects.order_by('-year_start', '-month_start')
     tools = Tool.objects.all()
-    tools = zip(tools, range(0, Tool.objects.count() * 100, 100))
+    if tools:
+        tools = zip(tools, range(0, Tool.objects.count() * 100, 100))
     soft_skills = SoftSkill.objects.all()
     if soft_skills:
         for soft_skill in soft_skills:
