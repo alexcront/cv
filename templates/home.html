@@ -14,10 +14,10 @@
   gtag('config', 'UA-171613327-1');
 </script>
   <title>{% if owner %}{{ owner.first_name }} {{ owner.last_name }}{% endif %}</title>
-  <meta content="{{ owner.about1 }}" name="description">
+  <meta content="{% if owner %}{{ owner.about1 }}{% endif %}" name="description">
   <meta content="Alex, Alex Cront, Alexandru, Marian, Cronț, Cront, Alexandru Cront, Alexandru Cronț, Developer, Engineer, Programmer, Professional, AUTOSAR, C, Embedded, Coding, Degree, Debugging, Agile, ASPICE, Senior, Leader, team," name="keywords">
   <!-- Favicons -->
-  <link href="{{ owner.favicon }}" rel="icon">
+  <link href="{% if owner %}{{ owner.favicon }}{% endif %}" rel="icon">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <!-- Vendor CSS Files -->
