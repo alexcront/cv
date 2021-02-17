@@ -5,9 +5,10 @@ from .models import Owner, Education, Experience, Volunteering, Tool, SoftSkill,
 
 def home(request):
     owner = Owner.objects.first()
-    owner.profile_image = str(owner.profile_image).split('/', 1)[1]
-    owner.background_image = str(owner.background_image).split('/', 1)[1]
-    owner.favicon = str(owner.favicon).split('/', 1)[1]
+    if owner:
+        owner.profile_image = str(owner.profile_image).split('/', 1)[1]
+        owner.background_image = str(owner.background_image).split('/', 1)[1]
+        owner.favicon = str(owner.favicon).split('/', 1)[1]
     educations = Education.objects.order_by('-year_start')
     experiences = Experience.objects.order_by('-year_start', '-month_start')
     volunteerings = Volunteering.objects.order_by('-year_start', '-month_start')
