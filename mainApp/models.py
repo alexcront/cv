@@ -203,14 +203,16 @@ class Testimonial(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
-    link = models.URLField(blank=True, null=True)
+    demo_link = models.URLField(blank=True, null=True)
+    code_link = models.URLField(blank=True, null=True)
     description = models.TextField(max_length=10000, blank=True, null=True)
-    image = models.ImageField(upload_to='MainApp/static/img/portofolio')
+    technologies = models.CharField(max_length=200, blank=True, null=True)
+    image = models.ImageField(upload_to='MainApp/static/img/portfolio')
 
     def save(self, *args, **kwargs):
         try:
             if self.id is not None:
-                this = Testimonial.objects.get(id=self.id)
+                this = Project.objects.get(id=self.id)
                 if this.image != self.image:
                     this.image.delete(save=False)
         finally:

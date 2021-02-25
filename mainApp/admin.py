@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Owner, Education, Experience, Volunteering, Tool, SoftSkill, MainSkill, Language,\
-    ProgrammingSkill, Testimonial
+    ProgrammingSkill, Testimonial, Project
 
 
 class OwnerAdmin(admin.ModelAdmin):
@@ -49,6 +49,9 @@ class ProgrammingSkillAdmin(admin.ModelAdmin):
 class TestimonialAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'position', 'company')
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
 
 admin.site.register(Owner, OwnerAdmin)
 admin.site.register(Education, EducationAdmin)
@@ -60,3 +63,4 @@ admin.site.register(MainSkill, MainSkillAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(ProgrammingSkill, ProgrammingSkillAdmin)
 admin.site.register(Testimonial, TestimonialAdmin)
+admin.site.register(Project, ProjectAdmin)

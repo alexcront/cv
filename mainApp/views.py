@@ -37,6 +37,9 @@ def home(request):
             testimonial.image = str(testimonial.image).split('/', 1)[1]
 
     projects = Project.objects.all()
+    if projects:
+        for project in projects:
+            project.image = str(project.image).split('/', 1)[1]
     return render(request, 'home.html', {'owner': owner, 'educations': educations, 'experiences': experiences,
                                          'volunteerings': volunteerings, 'tools': tools, 'soft_skills': soft_skills,
                                          'main_skills': main_skills, 'languages': languages,
